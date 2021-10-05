@@ -28,3 +28,4 @@ services:
     depends_on:
       - db
     # command: puma
+    # sudo chown -R $USER:$USER .
