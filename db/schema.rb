@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2021_10_03_161624) do
     t.string "images", array: true
   end
 
+<<<<<<< HEAD
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -55,6 +56,8 @@ ActiveRecord::Schema.define(version: 2021_10_03_161624) do
     t.datetime "updated_at", null: false
   end
 
+=======
+>>>>>>> 6ac999b55689870188b39be017e8304e6785c6f4
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -75,5 +78,8 @@ ActiveRecord::Schema.define(version: 2021_10_03_161624) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+<<<<<<< HEAD
   add_foreign_key "users", "roles"
+=======
+>>>>>>> 6ac999b55689870188b39be017e8304e6785c6f4
 end
