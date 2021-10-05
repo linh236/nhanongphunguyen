@@ -41,6 +41,15 @@
     <%= form.text_field :tiktok_link %>
   </div>
 
+ <div class="field">
+    <%= form.label :images %>
+    <%= form.file_field :images, multiple: true %>
+  </div>
+   <div>
+    <% post.images.each_with_index do |image, index|%>
+      <%= image_tag resize_image(image, '50x50') %>
+    <% end %>
+  </div>
   <div class="actions">
     <%= form.submit %>
   </div>

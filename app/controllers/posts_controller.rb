@@ -50,6 +50,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1 or /posts/1.json
   def destroy
     @post.destroy
+    @post.images.purge
     respond_to do |format|
       format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
       format.json { head :no_content }
@@ -64,6 +65,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :content, :youtube_link, :facebook_link, :twitter_link, :tiktok_link)
+      params.require(:post).permit(:title, :content, :youtube_link, :facebook_link, :twitter_link, :tiktok_link, images: [])
     end
 end

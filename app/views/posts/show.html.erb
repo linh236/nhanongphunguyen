@@ -29,6 +29,11 @@
   <strong>Tiktok link:</strong>
   <%= @post.tiktok_link %>
 </p>
+<p>
+<% @post.images.each_with_index do |image, index|%>
+  <%= image_tag resize_image(image, '200x100') %>
+<% end %>
+</p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>

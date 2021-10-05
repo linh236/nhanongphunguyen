@@ -1,17 +1,16 @@
 <p id="notice"><%= notice %></p>
+<div class="d-flex justify-content-between align-items-center">
+  <h1>Posts</h1>
+  <%= link_to 'New Post', new_post_path, class: 'btn btn-sm btn-primary text-white' %>
+</div>
 
-<h1>Posts</h1>
-
-<table>
+<table class="table table-bordered table-hover table-post">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Youtube link</th>
-      <th>Facebook link</th>
-      <th>Twitter link</th>
-      <th>Tiktok link</th>
-      <th colspan="3"></th>
+      <th class="col-sm-4">Title</th>
+      <th class="col-sm-4">Content</th>
+      <th class="col-sm-3">Social media</th>
+      <th class="col-sm-1">Images</th>
     </tr>
   </thead>
 
@@ -20,13 +19,34 @@
       <tr>
         <td><%= post.title %></td>
         <td><%= post.content %></td>
-        <td><%= post.youtube_link %></td>
-        <td><%= post.facebook_link %></td>
-        <td><%= post.twitter_link %></td>
-        <td><%= post.tiktok_link %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= post.youtube_link %>
+          <%= post.facebook_link %>
+          <%= post.twitter_link %>
+          <%= post.tiktok_link %>
+        </td>
+        <td>
+          <% post.images[0...3].each_with_index do |image, index|%>
+            <%= image_tag resize_image(image, '50x50') %>
+          <% end %>
+          <% if post.images.present? && post.images.length > 3%>
+            <span class="image-placeholder">
+              <%= image_tag '/assets/image-placeholder', class: 'image' %>
+              <span class="count-images">+ <%= post.images.length - 3%></span>
+            </span>
+          <% end %>
+        </td>
+        <td class="btn-actions align-items-center">
+          <%= link_to post, class: 'text-white btn btn-primary' do %>
+            <i class='bx bx-detail'></i>
+          <% end %>
+          <%= link_to edit_post_path(post), class: 'text-white btn btn-secondary' do %>
+           <i class='bx bx-edit'></i>
+          <% end %>
+          <%= link_to post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-white btn btn-danger' do %>
+           <i class='bx bx-trash'></i>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +54,3 @@
 
 <br>
 
-<%= link_to 'New Post', new_post_path %>
