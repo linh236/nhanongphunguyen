@@ -11,7 +11,7 @@
         <span class="tooltip">Search</span>
       </li>
       <li>
-        <a href="#">
+        <a href="<%= root_path %>">
           <i class='bx bx-grid-alt'></i>
           <span class="links_name">Dashboard</span>
         </a>
@@ -19,7 +19,7 @@
       </li>
       <% if isAdmin(current_user)%>
         <li>
-          <a href="#">
+          <a href="<%= users_path %>">
             <i class='bx bx-user' ></i>
             <span class="links_name">User</span>
           </a>
@@ -89,7 +89,7 @@
      <% end %>
      <li class="profile">
         <div class="profile-details">
-          <img src="assets/avata.jpg" alt="profileImg">
+          <img src="/assets/avata.jpg" alt="profileImg">
           <div class="name_job">
             <div class="name"><%= getFullNameOrEmail(current_user)%></div>
             <div class="job"><%= getPostionUser(current_user) %></div>
@@ -100,7 +100,7 @@
             <i class='bx bx-log-out' id="log_out" ></i>
           </a>
         <% else %>
-          <a>
+          <a href="<%= user_session_path %>">
             <i class="bx bx-log-in" id="log_in"></i>
           </a>
         <% end %>

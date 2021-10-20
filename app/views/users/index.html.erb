@@ -1,0 +1,26 @@
+<div class="row users">
+    <div class="user-header">
+        <p class="order">#</p>
+        <p class="email">Email</p>
+        <p class="full_name">Ful Name</p>
+        <p class="birth">Birth</p>
+        <p class="address">Address</p>
+        <p class="gender">gender</p>
+        <p class="position">Role</p>
+        <p class="created_at">CreatedAt</p>
+        <p class="updated_at">UpdatedAt</p>
+    </div>
+    <% @users.each_with_index do |user, index| %>
+        <div class="user">
+            <p class="order"><%= index + 1%></p>
+            <p class="email"><%= user.email %></p>
+            <p class="full_name"><%= user.full_name %></p>
+            <p class="birth"><%= user.birth %></p>
+            <p class="address"><%= user.address %></p>
+            <p class="gender"><%= checkGender(user.gender) %></p>
+            <p class="position"><%= user.role&.name %></p>
+            <p class="position"><%= format(user.created_at) %></p>
+            <p class="position"><%= format(user.updated_at) %></p>
+        </div>
+    <% end %>
+</div>

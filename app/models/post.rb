@@ -1,17 +1,10 @@
 class Post < ApplicationRecord
   has_many_attached :images
-  # mount_uploaders :images, ImageUploader # mount the uploaders
-  # validate :image_validates
+  after_save :update_user_post
 
-  # def image_validates
-  #   if images.attached?
-  #     if images.blob.byte_size > 1000000
-  #       images.purge
-  #       errors[:base] << 'Too big'
-  #     elsif !images.blob.content_type.starts_with?('image/')
-  #       images.purge
-  #       errors[:base] << 'Wrong format'
-  #     end
-  #   end
-  # end
+  def update_user_post 
+    if UserPost.create(post_id: self.id, user_id: self.user_id, show: true)
+      puts "Update UserPost successfully"
+    end
+  end
 end
