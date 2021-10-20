@@ -27,7 +27,11 @@
         </td>
         <td>
           <% post.images[0...3].each_with_index do |image, index|%>
-            <%= image_tag resize_image(image, '50x50') %>
+            <% if isShowImage(image) %>
+                <%= image_tag resize_image(image, '50x50') %>
+              <% else %>
+                <%= video_tag url_for(image), control: true, size: '250x250' %>
+              <% end %>
           <% end %>
           <% if post.images.present? && post.images.length > 3%>
             <span class="image-placeholder">
