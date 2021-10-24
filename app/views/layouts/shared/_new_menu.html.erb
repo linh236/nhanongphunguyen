@@ -1,0 +1,62 @@
+<div id="navbar">
+    <div class="menu offset-lg-1 col-lg-10 ">
+        <div class="logo">Logo</div>
+        <div class="label-menu d-flex justify-content-start aligin-items-center">
+          <a href="/" class="text-center item-menu">
+            <i class='bx bx-home'></i>
+            <p class="links_name color-white">Home</p>
+          </a>
+          <a class="text-center item-menu" data-bs-toggle="modal" data-bs-target="#commonModal">
+            <i class='bx bx-edit-alt font-medium-5'></i>
+            <p class="links_name">Post</p>
+          </a>
+        </div>
+        <div class="login-logout d-flex justify-content-end">
+          <% if user_signed_in?%>
+            <div class="d-flex justify-content-between">
+              <div class="menu-avata pointer avata d-flex align-items-center">
+                <img src="/assets/avata.jpg" alt="profileImg">
+              </div>
+            </div>
+          <% else %>
+            <div class="d-flex justify-content-end">
+              <div class="menu-avata avata d-flex align-items-center">
+                <img src="/assets/avata.jpg" alt="profileImg">
+              </div>
+            </div>
+          <% end %>
+        </div>
+    </div>
+</div>
+<div class="open-setting position-relative d-flex justify-content-end align-items-end">
+  <div class="bar-setting col-2 position-fixed justify-content-center">
+    <p class="arrow-right pointer"><span> &#187; </span></p>
+    <% if user_signed_in?%>
+      <div class="avata d-flex justify-content-center align-items-center">
+        <img src="/assets/avata.jpg" alt="profileImg">
+      </div>
+      <ul class="item-list">
+        <li class="item"> 
+          <a class="d-flex align-items-center" href="<%= destroy_user_session_path %>" data-method="delete" class="text-center item-menu">
+            <p class="links_name m-0">Logout</p>
+            <i class='bx bx-log-out' id="log_out" ></i>
+          </a>
+        </li>
+      </ul>
+    <% else %>
+      <div class="avata d-flex justify-content-center align-items-center">
+        <img src="/assets/null-avata.png" alt="profileImg">
+      </div>
+      <ul class="item-list">
+        <li class="item"> 
+          <a class="d-flex align-items-center" href=<%= user_session_path%>>
+            <p class="links_name">Login</p>
+            <i class="bx bx-log-in" id="log_in"></i>
+          </a>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+</div>
+
+<%= render 'modals/common_modal', title: 'Post', url: '', content: 'Content' %>

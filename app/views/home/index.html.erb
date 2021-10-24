@@ -1,1 +1,47 @@
- <div class="text">Dashboard</div> 
+<div class="dashboard">
+	<div class="profile">
+		<%= render 'home/shared/profile' %>
+	</div>
+	<div class="home-content">
+		<% @user_posts.each do |user_post|%>
+			<div class="block-post">
+				<div class="user-post d-flex justify-content-between align-items-center">
+					<div class="avata d-flex justify-content-start align-items-center">
+						<img src="/assets/null-avata.png" alt="profileImg">
+						<p><%= user_post.user.full_name || user_post.user.email %></p>
+					</div>
+					<p><%= format(user_post.created_at)%></p>
+				</div>
+				<div class="content-post">
+					<p class="title"><%= user_post.post&.title%></p>
+					<p class="content"><%= user_post.post&.content%></p>
+					<% user_post.post.images.each_with_index do |image, index|%>
+							<% if isShowImage(image) %>
+									<%= image_tag resize_image(image, '50x50') %>
+								<% else %>
+									<%= video_tag url_for(image), control: true, size: '250x250' %>
+								<% end %>
+						<% end %>
+				</div>
+				<div class="comment">
+					<div class="count-likes-comments d-flex justify-content-start align-items-center">
+						<p>0 Likes</p>
+						<p>0 Comments</p>
+					</div>
+					<div class="icon-action d-flex justify-content-start align-items-center">
+						<p class="pointer"><i class="far fa-thumbs-up"></i> like</p>
+						<p class="pointer"><i class="far fa-comment"></i> Comment</p>
+					</div>
+					<div class="avata-comment d-flex justify-content-start align-items-center">
+						<img src="/assets/null-avata.png" alt="profileImg">
+						<input type="text" class="form-control">
+						<input type="button" class="btn-post form-control" value="Post">
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div> 
+	<div class="event">
+		<%= render 'home/shared/event' %>
+	</div>
+</div>
