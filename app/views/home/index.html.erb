@@ -1,6 +1,6 @@
 <div class="dashboard">
 	<div class="profile">
-		<%= render 'home/shared/profile'%>
+		<%= render 'home/shared/profile' if user_signed_in?%>
 	</div>
 	<div class="home-content">
 		<% @user_posts.each do |user_post|%>
@@ -42,6 +42,6 @@
 		<% end %>
 	</div> 
 	<div class="event">
-		<%= render 'home/shared/event' %>
+		<%= render 'home/shared/event' if user_signed_in?%>
 	</div>
 </div>

@@ -6,3 +6,8 @@ $(document).ready ->
 			$("#navbar").css({'top': '-60px', 'position': 'initial'})
 	$('.menu-avata, .arrow-right').click -> 
 		$('.bar-setting').animate({'width': 'toggle'});
+	
+	$('.item-post').click ->
+		id = $(this).data('id');
+		if id == ''
+			window.location.href = "/users/sign_in";
