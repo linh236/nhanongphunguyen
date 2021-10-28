@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :user_posts
   resources :roles
   devise_for :users do
     get "signin" => "devise/sessions#new"
@@ -8,6 +9,16 @@ Rails.application.routes.draw do
   resources :posts do 
     resources :images, :only => [:create, :destroy]
   end
+  resources :users
   root to: 'home#index'
+
+  # --------API----------- -
+  scope module: 'api' do
+    namespace :v1 do
+        resources :posts
+        resources :user
+    end
+  end
+  # ---------END API--------
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

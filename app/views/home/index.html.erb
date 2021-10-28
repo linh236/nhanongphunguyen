@@ -1,181 +1,47 @@
- <div class="text">Dashboard</div> 
- <div class="row">
-    <div class="col-12" id="chartContainer"></div>
- </div>
- <script>
-window.onload = function () {
-    var chart = new CanvasJS.Chart("chartContainer", {
-        //theme: "light2", // "light1", "light2", "dark1", "dark2"
-        animationEnabled: true,
-        title:{
-            text: "Internet users"  
-        },
-        subtitles: [{
-            text: "Try Clicking and Hovering over Legends!"
-        }],
-        axisX: {
-            lineColor: "black",
-            labelFontColor: "black"
-        },
-        axisY2: {
-              gridThickness: 0,
-            title: "% of Population",
-            suffix: "%",
-            titleFontColor: "black",
-            labelFontColor: "black"
-        },
-        legend: {
-            cursor: "pointer",
-            itemmouseover: function(e) {
-                e.dataSeries.lineThickness = e.chart.data[e.dataSeriesIndex].lineThickness * 2;
-                e.dataSeries.markerSize = e.chart.data[e.dataSeriesIndex].markerSize + 2;
-                e.chart.render();
-            },
-            itemmouseout: function(e) {
-                e.dataSeries.lineThickness = e.chart.data[e.dataSeriesIndex].lineThickness / 2;
-                e.dataSeries.markerSize = e.chart.data[e.dataSeriesIndex].markerSize - 2;
-                e.chart.render();
-            },
-            itemclick: function (e) {
-                if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-                    e.dataSeries.visible = false;
-                } else {
-                    e.dataSeries.visible = true;
-                }
-                e.chart.render();
-            }
-        },
-        toolTip: {
-            shared: true
-        },
-        data: [{
-            type: "spline",
-            name: "Sweden",
-            markerSize: 5,
-              axisYType: "secondary",
-            xValueFormatString: "YYYY",
-            yValueFormatString: "#,##0.0\"%\"",
-            showInLegend: true,
-            dataPoints: [
-                { x: new Date(2009, 00), y: 91 },
-                { x: new Date(2010, 00), y: 90 },
-                { x: new Date(2011, 00), y: 92.8 },
-            ]
-        },
-        {
-            type: "spline",
-            name: "UK",
-            markerSize: 5,
-            axisYType: "secondary",
-            xValueFormatString: "YYYY",
-            yValueFormatString: "#,##0.0\"%\"",
-            showInLegend: true,
-            dataPoints: [
-                { x: new Date(2009, 00), y: 83.6 },
-                { x: new Date(2010, 00), y: 85 },
-                { x: new Date(2011, 00), y: 85.4 },
-            ]
-        },
-        {
-            type: "spline",
-            name: "UAE",
-            markerSize: 5,
-            axisYType: "secondary",
-            xValueFormatString: "YYYY",
-            yValueFormatString: "#,##0.0\"%\"",
-            showInLegend: true,
-            dataPoints: [
-                { x: new Date(2009, 00), y: 64 },
-                { x: new Date(2010, 00), y: 68 },
-                { x: new Date(2011, 00), y: 78 },
-            ]
-        },
-        {
-            type: "spline",
-            showInLegend: true,
-            name: "USA",
-            markerSize: 5,
-            axisYType: "secondary",
-            yValueFormatString: "#,##0.0\"%\"",
-            xValueFormatString: "YYYY",
-            dataPoints: [
-                { x: new Date(2009, 00), y: 71 },
-                { x: new Date(2010, 00), y: 71.7 },
-                { x: new Date(2011, 00), y: 69.7 },
-            ]
-        },
-        {
-            type: "spline",
-            name: "Switzerland",
-            markerSize: 5,
-            axisYType: "secondary",
-            xValueFormatString: "YYYY",
-            yValueFormatString: "#,##0.0\"%\"",
-            showInLegend: true,
-            dataPoints: [
-                { x: new Date(2009, 00), y: 81.3 },
-                { x: new Date(2010, 00), y: 83.9 },
-                { x: new Date(2011, 00), y: 85.2 },
-            ]
-        },
-        {
-            type: "spline",
-            name: "Honk Kong",
-            markerSize: 5,
-            axisYType: "secondary",
-            xValueFormatString: "YYYY",
-            yValueFormatString: "#,##0.0\"%\"",
-            showInLegend: true,
-            dataPoints: [
-                { x: new Date(2009, 00), y: 69.4 },
-                { x: new Date(2010, 00), y: 72 },
-                { x: new Date(2011, 00), y: 72.2 },
-            ]
-        },
-        {
-            type: "spline",
-            name: "Russia",
-            markerSize: 5,
-            axisYType: "secondary",
-            xValueFormatString: "YYYY",
-            yValueFormatString: "#,##0.0\"%\"",
-            showInLegend: true,
-            dataPoints: [
-                { x: new Date(2009, 00), y: 29 },
-                { x: new Date(2010, 00), y: 43 },
-                { x: new Date(2011, 00), y: 49 },
-            ]
-        },
-        {
-            type: "spline",
-            name: "Ukraine",
-            markerSize: 5,
-            axisYType: "secondary",
-            xValueFormatString: "YYYY",
-            yValueFormatString: "#,##0.0\"%\"",
-            showInLegend: true,
-            dataPoints: [
-                { x: new Date(2009, 00), y: 17.9 },
-                { x: new Date(2010, 00), y: 23.3 },
-                { x: new Date(2011, 00), y: 28.7 },
-            ]
-        },
-        {
-            type: "spline",
-            name: "India",
-            markerSize: 5,
-            axisYType: "secondary",
-            xValueFormatString: "YYYY",
-            yValueFormatString: "#,##0.0\"%\"",
-            showInLegend: true,
-            dataPoints: [
-                { x: new Date(2009, 00), y: 5.1 },
-                { x: new Date(2010, 00), y: 7.5 },
-                { x: new Date(2011, 00), y: 10.1 },
-            ]
-        }]
-    });
-    chart.render();
-    
-    }
-</script>
+<div class="dashboard">
+	<div class="profile">
+		<%= render 'home/shared/profile'%>
+	</div>
+	<div class="home-content">
+		<% @user_posts.each do |user_post|%>
+			<div class="block-post">
+				<div class="user-post d-flex justify-content-between align-items-center">
+					<div class="avata d-flex justify-content-start align-items-center">
+						<img src="/assets/null-avata.png" alt="profileImg">
+						<p><%= user_post.user.full_name || user_post.user.email %></p>
+					</div>
+					<p><%= format(user_post.created_at)%></p>
+				</div>
+				<div class="content-post">
+					<p class="title"><%= user_post.post&.title%></p>
+					<p class="content"><%= user_post.post&.content%></p>
+					<% user_post.post.images.each_with_index do |image, index|%>
+							<% if isShowImage(image) %>
+									<%= image_tag resize_image(image, '50x50') %>
+								<% else %>
+									<%= video_tag url_for(image), control: true, size: '250x250' %>
+								<% end %>
+						<% end %>
+				</div>
+				<div class="comment">
+					<div class="count-likes-comments d-flex justify-content-start align-items-center">
+						<p>0 Likes</p>
+						<p>0 Comments</p>
+					</div>
+					<div class="icon-action d-flex justify-content-start align-items-center">
+						<p class="pointer"><i class="far fa-thumbs-up"></i> like</p>
+						<p class="pointer"><i class="far fa-comment"></i> Comment</p>
+					</div>
+					<div class="avata-comment d-flex justify-content-start align-items-center">
+						<img src="/assets/null-avata.png" alt="profileImg">
+						<input type="text" class="form-control">
+						<input type="button" class="btn-post form-control" value="Post">
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div> 
+	<div class="event">
+		<%= render 'home/shared/event' %>
+	</div>
+</div>

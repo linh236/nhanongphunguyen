@@ -35,11 +35,6 @@ $(document).ready ->
   $('.sidebar').click ->
     $(this).toggleClass("open")
     menuBtnChange()
-    return
-  return
-
-
-  
     # return
   
 
