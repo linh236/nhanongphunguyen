@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   skip_before_action :authenticate_user!
 
-  DEFAULT_PER_PAGE = 2
+  DEFAULT_PER_PAGE = 10
   DEFAULT_PAGE = 1
   def index
     page =  params[:page].present? ? params[:page] : DEFAULT_PAGE
