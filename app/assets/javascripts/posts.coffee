@@ -26,7 +26,11 @@ $(document).ready ->
       type: 'POST',
       data: data,
       success: (res)->
-        console.log(res)
+        $('#commonModal').modal('toggle');
+        toastSuccess(res["message"])
+        setTimeout ->
+          window.location.reload()
+        ,3000
       error: (err)->  
         console.log(err)
 
