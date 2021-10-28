@@ -1,0 +1,14 @@
+@import "../variable";
+
+.content-profile {
+  .edit, .save {
+    color: $main-blue;
+  }
+  .avata {
+    img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50px;
+    }
+  }
+}
