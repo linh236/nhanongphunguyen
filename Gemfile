@@ -65,3 +65,6 @@ gem 'jquery-rails'
 gem "carrierwave"
 gem "fog-aws"
 gem 'image_processing'
+gem "active_model_serializers"
+gem "rack-cors"
+gem "will_paginate"

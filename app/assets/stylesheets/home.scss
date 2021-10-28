@@ -1,4 +1,4 @@
-@import "available";
+@import "variable";
 
 .dashboard {
   display: grid;
@@ -7,6 +7,12 @@
   grid-template-areas:
       "column1 column2 column3"
       " column1 column2 column3";
+  @include respond("md") {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "column2"
+      " column2";
+  }
   .profile {
     grid-area: column1;
     top: 87px;
@@ -14,6 +20,9 @@
     width: calc((83% - 95px) / 4.5);
     max-height: calc(100% - 72px);
     box-shadow: $box-shadow;
+    @include respond("md") { 
+      display: none;
+    }
   }
   .home-content {
     grid-area: column2;
@@ -105,5 +114,8 @@
     width: calc((83% - 95px) / 4.5);
     max-height: calc(100% - 72px);
     right: 8%;
+    @include respond("md") { 
+      display: none;
+    }
   }
 }
