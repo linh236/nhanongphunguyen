@@ -6,7 +6,7 @@
             <i class='bx bx-home'></i>
             <p class="links_name color-white">Home</p>
           </a>
-          <a class="text-center item-menu item-post" data-id="<%=current_user&.id%>" data-bs-toggle="modal" data-bs-target="#commonModal">
+          <a class="text-center item-menu item-post" data-toggle="modal" data-target="#myModal" data-id="<%=current_user&.id%>">
             <i class='bx bx-edit-alt font-medium-5'></i>
             <p class="links_name">Post</p>
           </a>
@@ -58,5 +58,3 @@
     <% end %>
   </div>
 </div>
-
-<%= render 'modals/common_modal', title: 'Post', url: v1_posts_path, modal_name: 'post', content: 'content' %>

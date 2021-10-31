@@ -8,5 +8,7 @@ class HomeController < ApplicationController
     # @user_posts = UserPost.order(created_at: :desc)
     @user_posts = UserPost.order(created_at: :desc).paginate(page: page, per_page: DEFAULT_PER_PAGE)
     @current_user = current_user
+    @slider_last = Slider.last
+    @slider = Slider.new
   end
 end
