@@ -2,9 +2,72 @@
 .pointer {
   cursor: pointer;
 }
+.d-flex {
+  display: flex;
+}
+
+.r-0 {
+  right: 0;
+} 
+.position-relative {
+  position: relative;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+.position-fixed {
+  position: fixed;
+}
+
+.mt-1
 p{
   margin: 0 !important;
 }
+.offset-lg-1 {
+  margin-left: 8.33333333%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-end {
+  justify-content: end;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.col-2 {
+  width: 16.66666667%;
+}
+
+.z-index-light {
+  z-index: 10;
+}
+.z-index {
+  z-index: 1000;
+}
+
+.p-2 {
+  padding: .5rem;
+}
+
+.mb-1 {
+  margin-bottom: .25rem;
+}
+
+.text-decoration-none {
+  text-decoration: none;
+}
+
 .custom-form-control {
   outline: none;
   box-shadow: none !important;
@@ -39,6 +102,7 @@ p{
   display: flex;
   transition: top 0.3s;
   padding: 6px 0;
+  z-index: 1000;
   // max-height: 60px;
   .menu {
     display: grid;

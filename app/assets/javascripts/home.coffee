@@ -24,7 +24,6 @@
   #  }
   # }
 $(document).ready ->
-
   menuBtnChange = ->
     if $(".sidebar").hasClass("open") is true
       $("#btn").addClass("bx-menu-alt-right").removeClass("bx-menu")
@@ -35,6 +34,76 @@ $(document).ready ->
   $('.sidebar').click ->
     $(this).toggleClass("open")
     menuBtnChange()
-    # return
-  
+    # return  
+
+  page = 1
+  isBusy = false
+
+  getImage = (array) -> 
+    image = ''
+    if array.length > 0
+      $.each array, (key, value) ->
+        image += "
+          <div class='image'>
+            <image src='#{value}'/>
+          </div>
+        "
+      return image
+    else
+      return image
+
+  $(window).scroll ->
+    if $(window).scrollTop() == $(document).height() - $(window).height() 
+      $(".post-placeholder").removeClass('hidden')
+      if !isBusy 
+        data = {
+          page: page += 1
+        }
+        $.ajax
+          url: '/v1/user_posts',
+          type: 'GET',
+          data: data,
+          success: (res)->
+            $(".post-placeholder").addClass('hidden')
+            html = ''
+            if res.data.current_page >= res.data.total_page
+              isBusy = true
+            $.each res.data.user_posts, (key, value) ->
+              html += "
+                <div class='block-post'>
+                  <div class='user-post d-flex justify-content-between align-items-center'>
+                    <div class='avata d-flex justify-content-start align-items-center'>
+                      <img src='/assets/null-avata.png' alt='profileImg'>
+                      <p>#{value['user']['full_name']}</p>
+                    </div>
+                    <p>#{moment(value['created_at']).fromNow()}</p>
+                  </div>
+                  <div class='content-post'>
+                    <p class='title'>#{value['post']['title']}</p>
+                    <p class='content'>#{value['post']['content']}</p>
+                    #{getImage(value['post']['images'])}
+                  </div>
+                  <div class='comment'>
+                    <div class='count-likes-comments d-flex justify-content-start align-items-center'>
+                      <p>0 Likes</p>
+                      <p>0 Comments</p>
+                    </div>
+                    <div class='icon-action d-flex justify-content-start align-items-center'>
+                      <p class='pointer'><i class='far fa-thumbs-up'></i> like</p>
+                      <p class='pointer'><i class='far fa-comment'></i> Comment</p>
+                    </div>
+                    <div class='avata-comment d-flex justify-content-start align-items-center'>
+                      <img src='/assets/null-avata.png' alt='profileImg'>
+                      <input type='text' class='form-control'>
+                      <input type='button' class='btn-post form-control' value='Post'>
+                    </div>
+                  </div>
+                </div>
+              "
+            $(".home-content").append(html)
+                  
+            toastSuccess(res["message"])
+          error: (err)->  
+            console.log(err)  
+    
 
