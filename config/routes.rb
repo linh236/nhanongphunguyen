@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     namespace :v1 do
         resources :posts
         resources :user
+        resources :user_posts
     end
   end
   # ---------END API--------
