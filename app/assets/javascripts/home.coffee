@@ -42,16 +42,21 @@ $(document).ready ->
   getImage = (array) -> 
     image = ''
     if array.length > 0
+      image += "<div class='image image_#{array.length}' >"
       $.each array, (key, value) ->
         image += "
-          <div class='image'>
-            <image src='#{value}'/>
-          </div>
+            <img src='#{value}' class='img_#{key+1}'/>
         "
+      image += "</div>"
+
       return image
     else
       return image
 
+  $(".autosize").on 'change keyup keydown paste cut', (e) ->
+    $(this).css('height', 'auto')
+    $(this).css('height', (this.scrollHeight) + 'px')
+  
   $(window).scroll ->
     if $(window).scrollTop() == $(document).height() - $(window).height() 
       $(".post-placeholder").removeClass('hidden')
@@ -101,9 +106,40 @@ $(document).ready ->
                 </div>
               "
             $(".home-content").append(html)
-                  
-            toastSuccess(res["message"])
+            # toastSuccess(res["message"])
           error: (err)->  
             console.log(err)  
     
-
+  $(".btn-post").click -> 
+    user_post_id = $(this).data('user_post_id')
+    user_id = $(this).data('user_id')
+    body = $(".comment_post_#{user_post_id}").val()
+    if body.length < 1||user_id == ''
+      toastSuccess("You must login to comment")
+    else 
+      data = {
+        'user_post_id' : user_post_id
+        'body' : body
+        'user_id': user_id
+      }
+      $.ajax
+        url: '/v1/comments'
+        type: 'POST'
+        data: data
+        success: (res) -> 
+          body = res['data']
+          html = "
+            <div class='item-comment'>
+								<div class='d-flex justify-content-start align-items-center gap-20'>
+									<div class='d-flex justify-content-start align-items-center gap-20'>
+										<img src='/assets/null-avata.png' alt='profileImg'>
+										#{body['user']['full_name']}
+									</div>
+                  #{body['body']}
+								</div>
+								<p class='time-comment'>Like | #{moment(body['created_at']).fromNow()}</p>
+							</div>
+          "
+          $(".show-comments_#{user_post_id}").append(html)
+        error: (err)->
+          console.log(err)

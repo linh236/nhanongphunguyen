@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'comments/index'
+  get 'comments/create'
   resources :user_posts
   resources :roles
   resources :sliders
@@ -19,6 +21,7 @@ Rails.application.routes.draw do
         resources :posts
         resources :user
         resources :user_posts
+        resources :comments
     end
   end
   # ---------END API--------

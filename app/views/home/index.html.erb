@@ -16,10 +16,10 @@
 				<div class="content-post">
 					<p class="title"><%= user_post.post&.title%></p>
 					<p class="content"><%= user_post.post&.content%></p>
-					<div class="image">
+					<div class="image image_<%= user_post.post&.images.size%>">
 						<% user_post.post&.images&.each_with_index do |image, index|%>
 							<% if isShowImage(image) %>
-									<%= image_tag resize_image(image, '50x50') %>
+									<%= image_tag resize_image(image, '50x50'), class: "img_" + (index+1).to_s %>
 								<% else %>
 									<%= video_tag url_for(image), control: true, size: '250x250' %>
 								<% end %>
@@ -37,8 +37,22 @@
 					</div>
 					<div class="avata-comment d-flex justify-content-start align-items-center">
 						<img src="/assets/null-avata.png" alt="profileImg">
-						<input type="text" class="form-control">
-						<input type="button" class="btn-post form-control" value="Post">
+						<textarea type="text" class="form-control autosize comment_post_<%= user_post.id %>" rows="1"></textarea>
+						<input type="button" class="btn-post form-control"  data-user_id="<%= current_user&.id %>"  data-user_post_id="<%= user_post.id %>" value="Post">
+					</div>
+					<div class="show-comments show-comments_<%= user_post.id %> scroller">
+						<% user_post&.comments.each do |comment| %>
+							<div class="item-comment">
+								<div class="d-flex justify-content-start align-items-center gap-20">
+									<div class="d-flex justify-content-start align-items-center gap-20">
+										<img src="/assets/null-avata.png" alt="profileImg">
+										<%= comment.user&.full_name%>
+									</div>
+										<%= comment.body%>
+								</div>
+								<p class="time-comment">Like | <%= time_ago_in_words(comment.created_at) %></p>
+							</div>
+						<% end %>
 					</div>
 				</div>
 			</div>
