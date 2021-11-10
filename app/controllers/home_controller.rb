@@ -10,5 +10,6 @@ class HomeController < ApplicationController
     @current_user = current_user
     @slider_last = Slider.last
     @slider = Slider.new
+    @new_avatar = User.new
   end
 end

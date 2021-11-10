@@ -52,6 +52,11 @@ $(document).ready ->
       return image
     else
       return image
+  getAvata = (avata_url) -> 
+    if avata_url.length > 0 
+      return "<img src=#{avata_url} alt='profileImg'>"
+    else
+      return "<img src='/assets/null-avata.png' alt='profileImg'>"
 
   $(".autosize").on 'change keyup keydown paste cut', (e) ->
     $(this).css('height', 'auto')
@@ -78,7 +83,7 @@ $(document).ready ->
                 <div class='block-post'>
                   <div class='user-post d-flex justify-content-between align-items-center'>
                     <div class='avata d-flex justify-content-start align-items-center'>
-                      <img src='/assets/null-avata.png' alt='profileImg'>
+                      #{getAvata(value['user']['avata_url'])}
                       <p>#{value['user']['full_name']}</p>
                     </div>
                     <p>#{moment(value['created_at']).fromNow()}</p>
@@ -98,7 +103,7 @@ $(document).ready ->
                       <p class='pointer'><i class='far fa-comment'></i> Comment</p>
                     </div>
                     <div class='avata-comment d-flex justify-content-start align-items-center'>
-                      <img src='/assets/null-avata.png' alt='profileImg'>
+                      #{getAvata(value['user']['avata_url'])}
                       <input type='text' class='form-control'>
                       <input type='button' class='btn-post form-control' value='Post'>
                     </div>
@@ -132,7 +137,7 @@ $(document).ready ->
             <div class='item-comment'>
 								<div class='d-flex justify-content-start align-items-center gap-20'>
 									<div class='d-flex justify-content-start align-items-center gap-20'>
-										<img src='/assets/null-avata.png' alt='profileImg'>
+                    #{getAvata(body['user']['avata_url'])}
 										#{body['user']['full_name']}
 									</div>
                   #{body['body']}
