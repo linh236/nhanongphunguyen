@@ -15,7 +15,7 @@
           <% if user_signed_in?%>
             <div class="d-flex justify-content-between">
               <div class="menu-avata pointer avata d-flex align-items-center">
-                <% if current_user.avata.present? %>
+                <% if current_user.avata.attached? %>
                   <%= image_tag resize_image(current_user.avata, '50x50')%>
                 <% else %>
                   <img src="/assets/null-avata.png" alt="profileImg">
@@ -37,7 +37,7 @@
     <p class="arrow-right pointer"><span> &#187; </span></p>
     <% if user_signed_in?%>
       <div class="avata d-flex justify-content-center align-items-center">
-        <% if current_user.avata.present? %>
+        <% if current_user.avata.attached? %>
           <%= image_tag resize_image(current_user.avata, '50x50')%>
         <% else %>
           <img src="/assets/null-avata.png" alt="profileImg">

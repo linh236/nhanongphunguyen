@@ -40,7 +40,7 @@
 						<p class="pointer"><i class="far fa-comment"></i> Comment</p>
 					</div>
 					<div class="avata-comment d-flex justify-content-start align-items-center">
-							<% if current_user.avata.present? %>
+							<% if current_user.avata.attached? %>
 								<%= image_tag resize_image(current_user.avata, '50x50')%>
 							<% else %>
 								<img src="/assets/null-avata.png" alt="profileImg">

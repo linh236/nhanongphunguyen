@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :like_comments
+  resources :likeds
   get 'comments/index'
   get 'comments/create'
   resources :user_posts
