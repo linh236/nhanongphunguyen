@@ -24,6 +24,7 @@ Rails.application.routes.draw do
         resources :user
         resources :user_posts
         resources :comments
+        resources :likeds
     end
   end
   # ---------END API--------

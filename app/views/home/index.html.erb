@@ -32,15 +32,15 @@
 				</div>
 				<div class="comment">
 					<div class="count-likes-comments d-flex justify-content-start align-items-center">
-						<p>0 Likes</p>
-						<p>0 Comments</p>
+						<p><span class="like_<%= user_post&.id%>"><%= count_liked(user_post&.likeds) %></span> Like(s)</p>
+						<p><%= user_post&.comments.size %> Comment(s)</p>
 					</div>
 					<div class="icon-action d-flex justify-content-start align-items-center">
-						<p class="pointer"><i class="far fa-thumbs-up"></i> like</p>
+						<p class="pointer like_post like_post_<%=user_post.id%> <%= active_liked(user_post&.likeds, current_user&.id) %>" data-user_id="<%= current_user&.id %>" data-user_post_id="<%=user_post.id%>"><i class="far fa-thumbs-up"></i> like</p>
 						<p class="pointer"><i class="far fa-comment"></i> Comment</p>
 					</div>
 					<div class="avata-comment d-flex justify-content-start align-items-center">
-							<% if current_user.avata.attached? %>
+							<% if current_user&.avata&.attached? %>
 								<%= image_tag resize_image(current_user.avata, '50x50')%>
 							<% else %>
 								<img src="/assets/null-avata.png" alt="profileImg">
