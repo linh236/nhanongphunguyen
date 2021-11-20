@@ -53,7 +53,7 @@ $(document).ready ->
     else
       return image
   getAvata = (avata_url) -> 
-    if avata_url.length > 0 
+    if avata_url != null 
       return "<img src=#{avata_url} alt='profileImg'>"
     else
       return "<img src='/assets/null-avata.png' alt='profileImg'>"

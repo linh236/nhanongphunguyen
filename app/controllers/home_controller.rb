@@ -11,5 +11,6 @@ class HomeController < ApplicationController
     @slider_last = Slider.last
     @slider = Slider.new
     @new_avatar = User.new
+    @events = Event.order(created_at: :desc)
   end
 end

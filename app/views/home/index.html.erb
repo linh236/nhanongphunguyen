@@ -8,7 +8,7 @@
 			<div class="block-post">
 				<div class="user-post d-flex justify-content-between align-items-center">
 					<div class="avata d-flex justify-content-start align-items-center">
-						<% if user_post.user.avata.present? %>
+						<% if user_post.user.avata.attached? %>
 							<%= image_tag resize_image(user_post.user.avata, '50x50')%>
 						<% else %>
 							<img src="/assets/null-avata.png" alt="profileImg">
@@ -53,7 +53,7 @@
 							<div class="item-comment">
 								<div class="d-flex justify-content-start align-items-center gap-20">
 									<div class="d-flex justify-content-start align-items-center gap-20">
-											<% if comment.user.avata.present? %>
+											<% if comment.user.avata.attached? %>
 												<%= image_tag resize_image(comment.user.avata, '50x50')%>
 											<% else %>
 												<img src="/assets/null-avata.png" alt="profileImg">
@@ -76,7 +76,7 @@
 =end%>
 	</div> 
 	<div class="event">
-		<%= render 'home/shared/event' if user_signed_in?%>
+		<%= render 'home/shared/event', events: @events if user_signed_in?%>
 	</div>
 </div>
 
