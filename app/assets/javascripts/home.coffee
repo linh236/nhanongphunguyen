@@ -148,3 +148,29 @@ $(document).ready ->
           $(".show-comments_#{user_post_id}").append(html)
         error: (err)->
           console.log(err)
+
+  $(".like_post").click -> 
+    user_post_id = $(this).data('user_post_id')
+    user_id = $(this).data('user_id')
+    if user_id == ''
+      toastSuccess("You must login to comment")
+    else 
+      data = {
+        'user_post_id' : user_post_id
+        'user_id': user_id
+      }
+      $.ajax
+        url: '/v1/likeds'
+        type: 'POST'
+        data: data
+        success: (res) -> 
+          data = res.data
+          $(".like_#{user_post_id}").html(data.count_liked)
+          if data.set_status
+            $(".like_post_#{user_post_id}").removeClass("no-active")
+            $(".like_post_#{user_post_id}").addClass("active")
+          else
+            $(".like_post_#{user_post_id}").removeClass("active")
+            $(".like_post_#{user_post_id}").removeClass("no-active")
+        error: (err)->
+          console.log(err)

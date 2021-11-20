@@ -149,6 +149,9 @@
             i {
               font-size: $font-24;
             }
+            &.active {
+              color: $main-blue;
+            }
           }
         }
         .avata-comment {

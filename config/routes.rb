@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :like_comments
+  resources :likeds
   get 'comments/index'
   get 'comments/create'
   resources :user_posts
@@ -22,6 +24,7 @@ Rails.application.routes.draw do
         resources :user
         resources :user_posts
         resources :comments
+        resources :likeds
     end
   end
   # ---------END API--------
