@@ -4,7 +4,7 @@ class LikedSerializer < ActiveModel::Serializer
   # has_one :user
 
   def count_liked
-    Liked.where(user_id: object.user_id, user_post_id: object.user_post_id, status: true).size
+    Liked.where(user_post_id: object.user_post_id, status: true).size
   end
 
   def set_status

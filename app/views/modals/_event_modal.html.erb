@@ -11,15 +11,24 @@
           <div class="form-event">
             <div class="mt-2 mb-2">
               <label class="mb-1">Title</label>
-              <input type="text" name="event[title]"  class="event-title col-8 custom-form-control form-control">
+              <input type="text" name="event[title]"  class="event-title col-8 custom-form-control form-control required">
             </div>
             <div class="mt-2 mb-2">
               <label class="mb-1">Description</label>
-              <textarea type="text" rows="5" name="event[description]"  class="event-content col-8 custom-form-control form-control"></textarea>
+              <textarea type="text" rows="5" name="event[description]"  class="event-content col-8 custom-form-control form-control required"></textarea>
+            </div>
+             <div class="mt-2 mb-2">
+              <label class="mb-1">Start</label>
+              <input type="datetime-local" name="event[start]"  class="event-title col-8 custom-form-control form-control required">
+
+            </div>
+             <div class="mt-2 mb-2">
+              <label class="mb-1">Finish</label>
+              <input type="datetime-local" name="event[finish]"  class="event-title col-8 custom-form-control form-control required">
             </div>
             <div class="mt-2 mb-2">
               <label class="mb-1">Picture</label>
-              <input type="file" multiple="true" name="event[picture]"  class="event-images col-8 custom-form-control form-control">
+              <input type="file" multiple="false" name="event[picture]"  class="event-images col-8 custom-form-control form-control required">
             </div>
           </div>
         </div>

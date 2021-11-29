@@ -21,7 +21,18 @@
   position: fixed;
 }
 
-.mt-1
+.mt-1 {
+  margin-top: .25rem;
+}
+
+.mt-2 {
+  margin-top: .5rem;
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}
+
 p{
   margin: 0 !important;
 }
@@ -45,6 +56,10 @@ p{
   justify-content: center;
 }
 
+.justify-content-evenly{
+  justify-content: space-evenly;
+}
+
 .justify-content-end {
   justify-content: end;
 }
@@ -66,6 +81,10 @@ p{
 
 .p-2 {
   padding: .5rem;
+}
+
+.mb-2 {
+  margin-bottom: .5rem;
 }
 
 .mb-1 {

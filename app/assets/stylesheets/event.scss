@@ -1,0 +1,44 @@
+@import "variable";
+
+.event-list {
+  .event-item {
+    padding: 8px;
+    border-bottom: 1px solid $border-grey;
+    img {
+      width: 77px;
+      height: 57px;
+    }
+    .event-detail {
+      p {
+        margin: 0;
+        font-size: $font-12;
+        font-weight: $fw-normal;
+        font-style: italic;
+        &:first-child {
+          font-size: $font-16;
+          font-style: inherit;
+          font-weight: $fw-semi-bold;
+          color: $main-blue;
+        }
+        &.title {
+          .title-icon {
+            width: 15px;
+            height: 15px;
+          }
+        }
+        &.start {
+          .flag-start {
+            width: 15px;
+            height: 15px;
+          }
+        }
+        &.finish {
+          .flag-finish {
+            width: 15px;
+            height: 15px;
+          }
+        }
+      }
+    }
+  }
+}

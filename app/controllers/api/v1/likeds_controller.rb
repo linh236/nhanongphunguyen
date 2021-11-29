@@ -5,7 +5,7 @@ module Api::V1
       like =  Liked.where(liked_params)
       if like.exists?
         status = like.first.status? ? false : true;
-        if Liked.update(liked_params.merge(status: status)) 
+        if like.update(liked_params.merge(status: status)) 
           render json: {message: 'Create update like post successfully', data: LikedSerializer.new(like.first)}
         else
           render json: {message: 'Create update like post faild', data: false}

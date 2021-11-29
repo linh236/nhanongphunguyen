@@ -16,6 +16,7 @@
 
   .profile {
     grid-area: column1;
+    border-radius: 10px;
     top: 87px;
     position: fixed;
     width: calc((83% - 95px) / 4.5);
@@ -238,6 +239,8 @@
     width: calc((83% - 95px) / 4.5);
     max-height: calc(100% - 72px);
     right: 8%;
+    border-radius: 10px;
+    box-shadow: $box-shadow;
     @include respond("md"); @include respond("sm"); @include respond("mobile") { 
       display: none;
     }
