@@ -1,0 +1,49 @@
+
+<div id="myModal" class="modal fade" role="dialog">
+    <form method="post" action="/posts" enctype="multipart/form-data">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h5 class="modal-title" id="commonModalLabel">Create a new post</h5>
+        </div>
+        <div class="modal-body">
+            <div class="form-post">
+                <div class="mt-2 mb-2">
+                    <label class="mb-1">Title</label>
+                    <input type="text" name="post[title]"  class="post-title col-8 custom-form-control form-control">
+                </div>
+                <div class="mt-2 mb-2">
+                    <label class="mb-1">Content</label>
+                    <textarea type="text" rows="5" name="post[content]"  class="post-content col-8 custom-form-control form-control"></textarea>
+                </div>
+                <div class="mt-2 mb-2">
+                    <label class="mb-1">Youtube link</label>
+                    <input type="text" name="post[youtube_link]"  class="post-youtube col-8 custom-form-control form-control">
+                </div>
+                <div class="mt-2 mb-2">
+                    <label class="mb-1">Facebook link</label>
+                    <input type="text" name="post[facebook_link]"  class="post-facebook col-8 custom-form-control form-control">
+                </div>
+                <div class="mt-2 mb-2">
+                    <label class="mb-1">Twitter link</label>
+                    <input type="text" name="post[twitter_link]"  class="post-twitter col-8 custom-form-control form-control">
+                </div>
+                <div class="mt-2 mb-2">
+                    <label class="mb-1">Tiktok link</label>
+                    <input type="text" name="post[tiktok_link]"  class="post-tiktok col-8 custom-form-control form-control">
+                </div>
+                <div class="mt-2 mb-2">
+                    <label class="mb-1">Images</label>
+                    <input type="file" multiple="true" name="post[images][]"  class="post-images col-8 custom-form-control form-control">
+                </div>
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary text-capitalize">Post</button>
+        </div>
+        </div>
+    </div>
+    </form>
+</div>

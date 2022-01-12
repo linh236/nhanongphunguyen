@@ -1,7 +1,19 @@
 @toastSuccess = (message) ->
-  html = "<div class='toast-body'>" + message + "</div>"
-  $('.toast-success').html(html)
-  $('.toast-success').toast('show')
+  Toastify({
+    text: message,
+    duration: 3000,
+    newWindow: true,
+    close: true,
+    offset: {
+      top: 100,
+    },
+    gravity: "top",
+    position: "right",
+    stopOnFocus: true,
+    style: {
+      background: "linear-gradient(to right, #00b09b, #96c93d)",
+    }
+  }).showToast();
 @toastWarning = (warning) ->
   html = "<div class='toast-body'>" + warning + "</div>"
   $('.toast-warning').html(html)

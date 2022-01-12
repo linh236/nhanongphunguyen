@@ -1,7 +1,11 @@
 <div class="content-profile">
   <p class="p-2 d-flex justify-content-end pointer edit" data-id="<%=current_user&.id%>">Edit</p>
   <div class="avata text-center">
-    <img src="/assets/avata.jpg">
+  	<% if current_user.avata.attached? %>
+      <%= image_tag resize_image(current_user.avata, '50x50'), class: "z-index-light", "data-target": "#changeAvatar", "data-toggle": "modal" %>
+    <% else %>
+      <img src="/assets/null-avata.png" class="z-index-light" data-toggle="modal" data-target="#changeAvatar">
+    <% end %>
   </div>
   <div class="personal col-12 p-2">
     <div class="mt-2 mb-2">

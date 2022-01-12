@@ -4,7 +4,7 @@ module Api::V1
     def create
       post = Post.new(post_params.merge(user_id: current_user.id))
       if post.save
-        render json: {data: PostSerializer.new(post, scope: current_user)}
+        render json: {message: 'Create a new post successfully',data: PostSerializer.new(post, scope: current_user)}
       else
         render json: {error: post_params.errors}
       end

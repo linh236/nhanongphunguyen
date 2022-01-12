@@ -57,7 +57,7 @@ module ApplicationHelper
   
     def format_datetime timer
       if timer.nil?
-        return "00:00:0000 0:0"
+        return ""
       else
         return timer.strftime("%d-%m-%Y %H:%M")
       end

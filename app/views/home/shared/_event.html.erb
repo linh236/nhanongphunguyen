@@ -1,1 +1,27 @@
-event
+<div class="event-list">
+  <% events.each do |event| %>
+    <div class="event-item d-flex justify-content-start align-items-center gap-10">
+      <% if event.picture.attached?%>
+        <%= image_tag resize_image(event.picture, '50x50'), class: "z-index-light"%>
+      <% end %>
+      <div class="event-detail">
+        <p class="title">
+          <%= image_tag '/assets/title.png', class: 'title-icon' %>
+          <%= event.title%>
+        </p>
+        <p class="start">
+          <%= image_tag '/assets/start.png', class: 'flag-start' %>
+          <%= format_datetime(event&.start) %>
+        </p>
+        <p class="finish">
+          <%= image_tag '/assets/finish.png', class: 'flag-finish' %>
+          <%= format_datetime(event&.finish) %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+  <div class="mt-3 mb-3 text-center">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#eventModal">Create Event</button>
+  </div>
+  
+</div>

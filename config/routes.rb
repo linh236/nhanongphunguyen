@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
+  resources :like_comments
+  resources :likeds
+  get 'comments/index'
+  get 'comments/create'
   resources :user_posts
   resources :roles
+  resources :sliders
+  resources :events
   devise_for :users do
     get "signin" => "devise/sessions#new"
     post "signin" => "devise/sessions#create"
@@ -17,6 +23,9 @@ Rails.application.routes.draw do
     namespace :v1 do
         resources :posts
         resources :user
+        resources :user_posts
+        resources :comments
+        resources :likeds
     end
   end
   # ---------END API--------
