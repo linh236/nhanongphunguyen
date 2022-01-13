@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :messages
+  resources :rooms
   resources :like_comments
   resources :likeds
   get 'comments/index'
