@@ -68,3 +68,4 @@ gem 'image_processing'
 gem "active_model_serializers"
 gem "rack-cors"
 gem "will_paginate"
+gem "aws-sdk-s3", require: false
