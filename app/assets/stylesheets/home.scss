@@ -1,4 +1,4 @@
-@import "available";
+@import "variable";
 
 .dashboard {
   display: grid;
@@ -7,13 +7,24 @@
   grid-template-areas:
       "column1 column2 column3"
       " column1 column2 column3";
+  @include respond("md"); @include respond('sm'); @include respond('mobile'){
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "column2"
+      " column2";
+  }
+
   .profile {
     grid-area: column1;
+    border-radius: 10px;
     top: 87px;
     position: fixed;
     width: calc((83% - 95px) / 4.5);
     max-height: calc(100% - 72px);
     box-shadow: $box-shadow;
+    @include respond("md"); @include respond("sm"); @include respond("mobile") { 
+      display: none;
+    }
   }
   .home-content {
     grid-area: column2;
@@ -22,6 +33,7 @@
       margin-bottom: 20px;
       border: 1px solid $border-grey;
       border-radius: 10px;
+      box-shadow: $box-shadow;
       .user-post {
         border-bottom: 1px solid $border-grey;
         padding-bottom: 6px;
@@ -50,6 +62,75 @@
           font-weight: $fw-normal;
           font-family: Source Sans Pro,sans-serif;
         }
+        .image {
+          @include respond("sm");  @include respond("md") {
+            text-align: center;
+          }
+          @include respond("mobile") {
+
+            // display: grid;
+            &.image_1 {
+              grid-template-columns: 1fr;
+              grid-template-areas:
+                  "img_column_1 "
+            } 
+            &.image_2 {
+              grid-template-columns: 1fr 1fr;
+              grid-gap: 40px;
+              grid-template-areas:
+                  "img_column_1 img_column_2 "
+            }        
+            &.image_3 {
+              grid-template-rows: repeat(3, 1fr);
+              grid-gap: 40px;
+              grid-template-areas:
+                  "img_column_1 img_column_7 img_column_5"
+                  "img_column_2 img_column_3 img_column_6";
+            }
+            &.image_4 {
+              grid-template-columns: repeat(4, 1fr);
+              grid-gap: 40px;
+              grid-template-areas:
+                  "img_column_1 img_column_2 img_column_3 img_column_4 "
+            } 
+            &.image_5 {
+              grid-template-columns: repeat(5, 1fr);
+              grid-gap: 40px;
+              grid-template-areas:
+                  "img_column_1 img_column_2 img_column_3 img_column_4"
+                  "img_column_5 img_column_6 img_column_7 img_column_8";
+            } 
+          }
+          img {
+            width: 193px;
+            height: 135px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 5px;
+            @include respond("sm") {
+              border-radius: 10px;
+              width: 100%;
+              height: 200px;
+              object-fit: cover;
+            }
+            @include respond("mobile") {
+              border-radius: 10px;
+              width: 100%;
+              height: 200px;
+              object-fit: cover;
+            }
+
+            @for $i from 1 through 20 {
+              &.img_#{$i} {
+                grid-area: img_column_#{$i};
+                @if ($i == 1) {
+                  width: 100%;
+                  height: auto;
+                }
+              }
+            }
+          }
+        }
       }
       .comment {
         margin-top: 2%;
@@ -69,6 +150,9 @@
             i {
               font-size: $font-24;
             }
+            &.active {
+              color: $main-blue;
+            }
           }
         }
         .avata-comment {
@@ -79,11 +163,15 @@
             height: 30px;
             border-radius: 50%;
           }
-          input {
+          textarea, input {
+            width: 100%;
             outline: none;
             box-shadow: none;
             border: 1px solid $border-grey;
             border-radius: 20px;
+            overflow: hidden;
+            resize: none;
+            max-height: 150px;
             &.btn-post {
               width: 83px;
               color: $main-blue;
@@ -95,6 +183,52 @@
             }
           }
         }
+        .show-comments {
+          margin-top: 2%;
+          gap:20px;
+          max-height: 300px;
+          overflow-y: scroll;
+          .item-comment {
+            img {
+              width: 30px;
+              height: 30px;
+              border-radius: 50%;
+            }
+            .time-comment {
+              padding-left: 50px;
+              font-size: $font-12;
+              font-style: italic;
+            }
+          }
+        }
+      }
+    }
+    #myCarousel {
+      margin: 20px 0;
+      border-radius: 20px;
+      box-shadow: $box-shadow;
+      .changeBG {
+        background-color: $main-white;
+        border-radius: 20px;
+        padding: 4px;
+        cursor: pointer;
+        margin: 1%;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+      .carousel-inner {
+        border-radius: 20px;
+        .item {
+          img {
+            height: 333px;
+            width: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+      .left, .right {
+        border-radius: 20px;
       }
     }
   }
@@ -105,5 +239,10 @@
     width: calc((83% - 95px) / 4.5);
     max-height: calc(100% - 72px);
     right: 8%;
+    border-radius: 10px;
+    box-shadow: $box-shadow;
+    @include respond("md"); @include respond("sm"); @include respond("mobile") { 
+      display: none;
+    }
   }
 }

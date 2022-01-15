@@ -1,1 +1,39 @@
-profile
+<div class="content-profile">
+  <p class="p-2 d-flex justify-content-end pointer edit" data-id="<%=current_user&.id%>">Edit</p>
+  <div class="avata text-center">
+  	<% if current_user.avata.attached? %>
+      <%= image_tag resize_image(current_user.avata, '50x50'), class: "z-index-light", "data-target": "#changeAvatar", "data-toggle": "modal" %>
+    <% else %>
+      <img src="/assets/null-avata.png" class="z-index-light" data-toggle="modal" data-target="#changeAvatar">
+    <% end %>
+  </div>
+  <div class="personal col-12 p-2">
+    <div class="mt-2 mb-2">
+      <label class="mb-1">Full Name</label>
+      <input disabled type="text"  class="full_name isEdit col-8 custom-form-control form-control" value="<%=current_user&.full_name%>">
+    </div>
+     <div class="mt-2 mb-2">
+      <label class="mb-1">Email</label>
+      <input disabled type="email"  class="email isEdit col-8 custom-form-control form-control" value="<%=current_user&.email%>">
+    </div>
+    <div class="mt-2 mb-2">
+      <label class="mb-1">Date of Birth</label>
+      <input disabled type="date"  class="birth isEdit col-8 custom-form-control form-control" value="<%= current_user&.birth%>">
+    </div>
+    <div class="mt-2 mb-2">
+      <label class="mb-1">Gender</label>
+      <%= select '', 'gender',  
+            options_for_select(
+                    [
+                      ["Male", false],
+                      ["Female", true],
+                    ],
+                    :selected => current_user&.gender,),
+                    { } , { :class => 'gender form-control isEdit', :disabled => true  }%>
+    </div>        
+    <div class="mt-2 mb-2">
+      <label class="mb-1">Address</label>
+      <input disabled type="text"  class="address isEdit col-8 custom-form-control form-control" value="<%= current_user&.address%>">
+    </div>    
+  </div>
+</div>

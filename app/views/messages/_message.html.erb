@@ -1,0 +1,9 @@
+<div class="message mb-3 <%= 'me' if message.user == current_user%>">
+  <div class="content-container">
+    <p class="content"><%= message.content %></p>
+    <div class="auth">
+      <%= message.user.full_name %>
+    </div>
+  </div>
+</div>
+<br>

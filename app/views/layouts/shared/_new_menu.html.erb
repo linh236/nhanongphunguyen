@@ -6,7 +6,7 @@
             <i class='bx bx-home'></i>
             <p class="links_name color-white">Home</p>
           </a>
-          <a class="text-center item-menu" data-bs-toggle="modal" data-bs-target="#commonModal">
+          <a class="text-center item-menu item-post" data-toggle="modal" data-target="#myModal" data-id="<%=current_user&.id%>">
             <i class='bx bx-edit-alt font-medium-5'></i>
             <p class="links_name">Post</p>
           </a>
@@ -15,13 +15,17 @@
           <% if user_signed_in?%>
             <div class="d-flex justify-content-between">
               <div class="menu-avata pointer avata d-flex align-items-center">
-                <img src="/assets/avata.jpg" alt="profileImg">
+                <% if current_user.avata.attached? %>
+                  <%= image_tag resize_image(current_user.avata, '50x50')%>
+                <% else %>
+                  <img src="/assets/null-avata.png" alt="profileImg">
+                <% end %>
               </div>
             </div>
           <% else %>
             <div class="d-flex justify-content-end">
               <div class="menu-avata avata d-flex align-items-center">
-                <img src="/assets/avata.jpg" alt="profileImg">
+                <img src="/assets/null-avata.png" alt="profileImg">
               </div>
             </div>
           <% end %>
@@ -29,11 +33,15 @@
     </div>
 </div>
 <div class="open-setting position-relative d-flex justify-content-end align-items-end">
-  <div class="bar-setting col-2 position-fixed justify-content-center">
+  <div class="z-index-light bar-setting col-2 position-fixed justify-content-center">
     <p class="arrow-right pointer"><span> &#187; </span></p>
     <% if user_signed_in?%>
       <div class="avata d-flex justify-content-center align-items-center">
-        <img src="/assets/avata.jpg" alt="profileImg">
+        <% if current_user.avata.attached? %>
+          <%= image_tag resize_image(current_user.avata, '50x50')%>
+        <% else %>
+          <img src="/assets/null-avata.png" alt="profileImg">
+        <% end %>
       </div>
       <ul class="item-list">
         <li class="item"> 
@@ -58,5 +66,3 @@
     <% end %>
   </div>
 </div>
-
-<%= render 'modals/common_modal', title: 'Post', url: posts_path, modal_name: 'post', content: 'content' %>

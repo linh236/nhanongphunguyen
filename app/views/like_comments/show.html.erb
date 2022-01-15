@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @like_comment.comment %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @like_comment.user %>
+</p>
+
+<%= link_to 'Edit', edit_like_comment_path(@like_comment) %> |
+<%= link_to 'Back', like_comments_path %>

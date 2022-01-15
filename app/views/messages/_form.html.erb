@@ -1,0 +1,7 @@
+<%= form_with(model: message, local: true) do |form| %>
+  <%= form.hidden_field :room_id, value: room.id %>
+  <div class="d-flex gap-15">
+    <%= form.text_area :content, rows: 4, class: "input-message form-control" %>
+    <%= form.submit "Send", class: "send-message btn btn-primary"%>
+  </div>
+<% end %>
