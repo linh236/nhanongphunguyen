@@ -1,0 +1,82 @@
+@import "variable";
+
+.chat {
+  .room-link {
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+    .card {
+      position: relative;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-color: $main-white;
+      background-clip: border-box;
+      border: 1px solid rgba(0,0,0,.125);
+      border-radius: .25rem;
+      margin-bottom: .5rem;
+      .card-body {
+        -webkit-box-flex: 1;
+        flex: 1 1 auto;
+        padding: 1.25rem;
+        p {
+          font-weight: $fw-semi-bold;
+        }
+      }
+      &:hover {
+        background-color: $border-grey2;
+        .card-body {
+          p, small {
+            color: $main-white;
+          }
+        }
+      }
+      &.active {
+        background-color: $border-grey2;
+        .card-body {
+          p, small {
+            color: $main-white;
+          }
+        }
+      }
+    }
+  }
+  .chat-room {
+    .message-list {
+      height: 78vh;
+      overflow-y: scroll;
+      .message {
+        min-height: 30px;
+        .content-container {
+          display: inline-block;
+          .content {
+            padding: 8px 16px;
+            background-color: $grey-nuance-lighter;
+            border-radius: 20px;
+          }
+          .auth {
+            font-size: $font-12;
+            color: $main-grey;
+            margin-left: 10px;
+          }
+        }
+        &.me {
+          .content-container {
+            float: right;
+            .content {
+              background-color: $metric-blue;
+              color: $main-white;
+            }
+          }
+        }
+      }
+    }
+  }
+}
