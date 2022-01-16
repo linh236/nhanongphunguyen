@@ -204,6 +204,10 @@ p{
       border: 2px solid $main-white;
       padding: 0px 6px;
       border-radius: 34px;
+      opacity: 0.5;
+      &.active {
+        opacity: 1;
+      }
       .icon-fb {
         font-size: 30px;
         color: $main-white;
@@ -238,6 +242,10 @@ p{
     right: 0px;
     top: 0px;
     background: $main-white;
+    @include respond("sm") {
+      width: 36%;
+      z-index: 1000;
+    }
     .avata {
       img {
         width: 45px;

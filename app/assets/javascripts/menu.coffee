@@ -12,7 +12,7 @@ $(document).on 'turbolinks:load', ->
 		if id == ''
 			window.location.href = "/users/sign_in";
 	
-	$array_path = ['/', 'rooms',]
+	$array_path = ['/', '/rooms',]
 	$array_menu = ['home', 'rooms']
 	$pathname = $(location).attr('pathname')
 	$a = $array_path.indexOf($pathname)

@@ -1,3 +1,5 @@
+@import "variable";
+
 .users {
     .user-header {
         display: grid;
@@ -32,4 +34,7 @@
     display: grid;
     grid-template-columns: 0.4fr;
     justify-content: center;
+    @include respond("sm") {
+        display: block;
+    }
 }

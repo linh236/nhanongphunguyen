@@ -1,10 +1,14 @@
 <div class="form-login">
   <h2 class="text-center">Log in UT Forum</h2>
   <% if notice.present? || alert.present? %>
-  <div class="alert alert-danger text-center">
-    <p class="notice"><%= notice if notice.present? %></p>
-    <p class="alert"><%= alert if alert.present? %></p>
-  </div>
+    <div class="alert <%= alert.present? ? 'alert-success' : 'alert-danger' %> text-center">
+      <% if notice.present? %>
+        <p class="notice"><%= notice %></p>
+      <% end %>
+      <% if alert.present? %>
+        <p class="alert"><%= alert %></p>
+      <% end %>
+    </div>
   <% end %>
   
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

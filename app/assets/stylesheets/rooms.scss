@@ -48,6 +48,31 @@
       }
     }
   }
+  .dots-menu{
+    position: absolute;
+    top: 25%;
+    right: 0;
+    cursor: pointer;
+    &:hover {
+      color: $main-blue;
+    }
+    &:after {
+      content: '\2807';
+      font-size: 28px;
+    }
+  }
+  .chose {
+    display: none;
+    position: absolute;
+    list-style: none;
+    right: 0;
+    top: 100%;
+    z-index: 100;
+    padding: 8px 10px 8px 20px;
+    border: 1px solid $border-grey;
+    background-color: $main-white;
+
+  }
   .chat-room {
     .message-list {
       height: 78vh;

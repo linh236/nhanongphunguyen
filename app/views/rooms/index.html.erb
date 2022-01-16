@@ -1,20 +1,25 @@
-<p id="notice"><%= notice %></p>
-
 <div class="container-fluid chat">
   <div class="row">
     <div class="col-sm-3">
       <%= render 'form', room: Room.new %>
       <hr>
       <% @rooms.each do |room| %>
-        <%= link_to room, class: "room-link" do %>
-          <% active_class = (@room == room) ? 'active' : '' %>
-          <div class="card <%= active_class %>">
-            <div class="card-body">
-              <p class="room"><%= room.name %></p>
-              <small><%= room.users.uniq.count%> Members</small>
+        <div class="position-relative">
+          <%= link_to room, class: "room-link" do %>
+            <% active_class = (@room == room) ? 'active' : '' %>
+            <div class="card <%= active_class %>">
+              <div class="card-body">
+                <p class="room"><%= room.name %></p>
+                <small><%= room.users.uniq.count%> Members</small>
+              </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+          <div class="dots-menu" data-room-id="<%= room.id%>"></div>
+          <ul class="chose chose-<%= room.id %>">
+              <li>Edit</li>
+              <li>Delete</li>
+            </ul>
+        </div>
       <% end %>
     </div>
     <div class="col-sm-9">
