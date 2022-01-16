@@ -23,7 +23,7 @@
   #    closeBtn.classList.replace("bx-menu-alt-right","bx-menu");
   #  }
   # }
-$(document).ready ->
+$(document).on 'turbolinks:load', ->
   menuBtnChange = ->
     if $(".sidebar").hasClass("open") is true
       $("#btn").addClass("bx-menu-alt-right").removeClass("bx-menu")

@@ -27,3 +27,9 @@
         }
     }
 }
+
+.form-login,.form-forget-password,.form-signup {
+    display: grid;
+    grid-template-columns: 0.4fr;
+    justify-content: center;
+}

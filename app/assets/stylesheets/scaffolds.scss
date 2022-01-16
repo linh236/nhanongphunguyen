@@ -199,6 +199,16 @@ p{
     }
   }
   .login-logout {
+    .fb-container {
+      cursor: pointer;
+      border: 2px solid $main-white;
+      padding: 0px 6px;
+      border-radius: 34px;
+      .icon-fb {
+        font-size: 30px;
+        color: $main-white;
+      }
+    }
     .avata {
       img {
         width: 45px;

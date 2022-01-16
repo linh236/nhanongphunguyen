@@ -2,7 +2,7 @@
     <div class="menu offset-lg-1 col-lg-10 ">
         <div class="logo">Logo</div>
         <div class="label-menu d-flex justify-content-start aligin-items-center">
-          <a href="/" class="text-center item-menu">
+          <a href="/" class="text-center item-menu item-menu-home">
             <i class='bx bx-home'></i>
             <p class="links_name color-white">Home</p>
           </a>
@@ -13,7 +13,12 @@
         </div>
         <div class="login-logout d-flex justify-content-end">
           <% if user_signed_in?%>
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between gap-15">
+              <div class="fb-container d-flex align-items-center">
+                <%= link_to rooms_path do %>
+                  <i class="icon-fb fab fa-facebook-messenger"></i>
+                <% end %>
+              </div>
               <div class="menu-avata pointer avata d-flex align-items-center">
                 <% if current_user.avata.attached? %>
                   <%= image_tag resize_image(current_user.avata, '50x50')%>
